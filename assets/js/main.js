@@ -151,6 +151,20 @@ $(document).ready(function () {
         });
     });
 
+    $("#loginLink").click(function (event) {
+        event.preventDefault();
+
+        $.get("/partials/login.html", function (data) {
+            $("#contentArea").addClass('animate__animated animate__bounceOutLeft').one('animationend', function () {
+                $("#contentArea").html(data).removeClass('animate__animated animate__bounceOutLeft');
+
+                $("#contentArea").addClass('animate__animated animate__bounceInRight').one('animationend', function () {
+                    $(this).removeClass('animate__animated animate__bounceInRight');
+                });
+            });
+        });
+    });
+
     $("#contentArea").on("click", "#productoLink", function (event) {
         event.preventDefault();
         
@@ -163,7 +177,6 @@ $(document).ready(function () {
             });
         });
     });
-
 
 
 });
